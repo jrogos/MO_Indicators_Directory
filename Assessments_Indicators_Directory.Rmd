@@ -12,57 +12,27 @@ library(htmltools)
 # Using isotope to power the layout of the page: https://isotope.metafizzy.co/
 # See the website to download the documentation, javascripts, and learn about how to use plus licensing
 
-# yaml with no footer
-# title: "Assessments and Indicators Directory"
-# output: html_document
-
-#yaml with footer?
-# title: "Assessments and Indicators Directory"
-# output: 
-#   html_document:
-#        include:
-#           after_body: footer.html
-
-# Trying to use proper code to get to the package
-# <script src="//isotope-docs//isotope.pkgd.min.js"></script> # fail
-#<script src="isotope-docs/js/jquery.min.js"></script> # success, but not the whole package
-#<script src="isotope-docs/js/isotope-docs.min.js"></script> # same
-#<div class="grid" data-isotope='{ "itemSelector": ".grid-item", "layoutMode": "fitRows" }'> # html version of js code for layout options
-```
-
-```{r, echo = FALSE}
-# Set style for various elements of html
-#   border-style: outset;
-#   border: solid;
-#   border-color: ccc;
-#   border-radius: 7px;
-
-# trying to figure out footer code
-# .footer {
-#   position: absolute;
-#   bottom: 0;
-#   width: 100%;
-#   /* Set the fixed height of the footer here */
-#   height: 60px;
-#   background-color: #f5f5f5;
-# }
-
-# #footer {
-#    position:absolute;
-#    bottom:0;
+# footer code
+# footer {
+#    position:fixed;
+#    left:0px;
+#    bottom:0px;
+#    height:100px;
 #    width:100%;
-#    height:60px;   /* Height of the footer */
-#    background:#6cf;
+#    background:#fff;
+#    border-color: #666;
+#    border-top-style: solid;
 # }
 ```
+
 <style>
 body {
   background-color: lightblue;
-  margin-bottom:60px;   /* Height of the footer */
+  margin-bottom:110px;   /* Height of the footer */
 }
 
 .main-container {
-max-width: 1800px;
+max-width: 100%;
 margin-left: 10%;
 margin-right: 10%;
 }
@@ -112,15 +82,13 @@ margin-bottom: 0;
 }
 
 footer {
-   position:fixed;
+   position: fixed;
    left:0px;
    bottom:0px;
-   height:45px;
+   height:60px;
+   z-index: -1;
    width:100%;
-   background:#fff;
-}
-
-
+   background: lightblue;
 }
 
 </style>
@@ -219,7 +187,7 @@ footer {
   <p class="desc"><span style="color: #339999">desc:</span> Classifies species vulnerability to environmental change. Index is based on environmental tolerances weighted by species dispersal ability, distribution range, rarity, and occupied habitat resilience. Tolerances are defined by predicted changes in abundance in response to projected future temperature and flow conditions under climate change scenarios along with tolerance to habitat degradation. Habitat resilience is defined by the length of unfragmented stream surrounding occupied habitat</p>
   <br>
 </div>
-</body>
+
 ```{r, echo = FALSE}
 # Below is javascript code to run the display of the grid, which class the item selector is based on, and the filter to display
 # Note this is perhaps what you could call the global filter -- not the command for buttons.
@@ -316,7 +284,7 @@ function concatValues( obj ) {
 # add footer
 ```
 <footer>
-&nbsp;
-<center><p> Built with: <a href="http://isotope.metafizzy.co">isotope</a> by <a href="https://twitter.com/jsrogos">@jsrogos</a>.</p></center>
+<br>
+<center><p> Built with: <a href="http://isotope.metafizzy.co">isotope</a> by <a href="https://github.com/jrogos">Jane Rogosch</a>, <a href="https://twitter.com/jrogos">@jsrogos</a></p></center>
 &nbsp;
 </footer>
