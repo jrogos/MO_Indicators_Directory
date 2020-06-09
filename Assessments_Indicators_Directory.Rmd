@@ -11,18 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(htmltools)
 # Using isotope to power the layout of the page: https://isotope.metafizzy.co/
 # See the website to download the documentation, javascripts, and learn about how to use plus licensing
-
-# footer code
-# footer {
-#    position:fixed;
-#    left:0px;
-#    bottom:0px;
-#    height:100px;
-#    width:100%;
-#    background:#fff;
-#    border-color: #666;
-#    border-top-style: solid;
-# }
+#
 ```
 
 <style>
@@ -190,43 +179,6 @@ footer {
 
 ```{r, echo = FALSE}
 # Below is javascript code to run the display of the grid, which class the item selector is based on, and the filter to display
-# Note this is perhaps what you could call the global filter -- not the command for buttons.
-# To show all items set filter to filter: '*'
-# To show specific items use  filter: '.fragmentation', OR '.fragmentation, . landuse'
-# $('.grid').isotope({
-#   // options
-#   percentPosition: true,
-#   itemSelector: '.grid-item',
-#   filter: '*',
-#   layoutMode: 'masonry',
-#   masonry: {
-#   columnWidth: '.grid-sizer'
-#   }
-# });
-
-# // store filter for each group
-# var filters = {};
-# 
-# $(.'filters').on( 'click', '.button', function(event) {
-#   var $button = $(event.currentTarget);
-#   // get group key
-#   var $buttonGroup = $button.parents('.button-group');
-#   var filterGroup = $buttonGroup.attr('data-filter-group');
-#   // set filter for group
-#   filters[ filterGroup ] = $button.attr('data-filter');
-#   // combine filters
-#   var filterValue = concatValues( filters );
-#   $grid.isotope({ filter: filterValue });
-# });
-# 
-# // flatten object by concatting values
-# function concatValues( obj ) {
-#   var value = '';
-#   for ( var prop in obj ) {
-#     value += obj[ prop ];
-#   }
-#   return value;
-# }
 
 ```
 
