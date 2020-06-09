@@ -1,0 +1,322 @@
+---
+title: "Assessments and Indicators Directory"
+output: 
+  html_document
+
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+# library(blogdown)
+# library(widgetframe)
+library(htmltools)
+# Using isotope to power the layout of the page: https://isotope.metafizzy.co/
+# See the website to download the documentation, javascripts, and learn about how to use plus licensing
+
+# yaml with no footer
+# title: "Assessments and Indicators Directory"
+# output: html_document
+
+#yaml with footer?
+# title: "Assessments and Indicators Directory"
+# output: 
+#   html_document:
+#        include:
+#           after_body: footer.html
+
+# Trying to use proper code to get to the package
+# <script src="//isotope-docs//isotope.pkgd.min.js"></script> # fail
+#<script src="isotope-docs/js/jquery.min.js"></script> # success, but not the whole package
+#<script src="isotope-docs/js/isotope-docs.min.js"></script> # same
+#<div class="grid" data-isotope='{ "itemSelector": ".grid-item", "layoutMode": "fitRows" }'> # html version of js code for layout options
+```
+
+```{r, echo = FALSE}
+# Set style for various elements of html
+#   border-style: outset;
+#   border: solid;
+#   border-color: ccc;
+#   border-radius: 7px;
+
+# trying to figure out footer code
+# .footer {
+#   position: absolute;
+#   bottom: 0;
+#   width: 100%;
+#   /* Set the fixed height of the footer here */
+#   height: 60px;
+#   background-color: #f5f5f5;
+# }
+
+# #footer {
+#    position:absolute;
+#    bottom:0;
+#    width:100%;
+#    height:60px;   /* Height of the footer */
+#    background:#6cf;
+# }
+```
+<style>
+body {
+  background-color: lightblue;
+  margin-bottom:60px;   /* Height of the footer */
+}
+
+.main-container {
+max-width: 1800px;
+margin-left: 10%;
+margin-right: 10%;
+}
+  .title {
+  font-size: 24px;
+  margin-left: 2%;
+  margin-right: 2%;
+  font-weight: 300;
+  text-align: justify;
+}
+.caption {
+  font-size: 16px;
+  margin-left: 2%;
+  margin-right: 2%;
+  color: gray;
+  text-align: justify;
+}
+.desc {
+  font-size: 14px;
+  margin-left: 2%;
+  margin-right: 2%;
+  text-align: justify;
+}
+.grid-item { 
+  width: 25%;
+  background: #fff;
+  box-shadow: 0 5px 10px 0 gray, 0 7px 20px 0 gray;
+  border-radius: 7px;
+}
+
+.grid-item img {
+  width: 96%;
+  margin-left: 2%;
+  margin-top: 2%
+}
+.grid-sizer { width: 33.333%; }
+
+.button.is-checked{
+  background-color: #666666;
+  color: white;
+}
+
+p {
+margin-top: 0;
+margin-left: 2%;
+margin-bottom: 0;
+}
+
+footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:45px;
+   width:100%;
+   background:#fff;
+}
+
+
+}
+
+</style>
+
+
+<left> <p style="font-size: 16px;"> This webpage is a living document of assessments and their indices that have been developed as decision support tools for freshwater conservation. All tools provide information for the state of Missouri, although they may be the result of regional or national assessments.</p></left>
+
+
+<center> <h3> Tools available to explore </h3> </center>
+<center> <h4> Click on icons to be redirected to source webpages </h4></center>
+
+<script src="isotope-docs/isotope.pkgd.min.js"></script>
+
+``` {r, echo = FALSE}
+# Set up buttons for the user interface using html code followed by the java script filter for when a button is pushed
+# have button for
+# what is included in assessment (fragmentation, landuse, etc.)
+# whether the data products are public or private
+# type of tool (screening tool - identify potential sites or species that may be hightly impacted by environmental stressors
+
+# These are combination filters
+# In the JavaScript, these filters are stored in an object, 'filters'. When a button is clicked, it changes the filter for that group. The object’s 
+# values are then combined into one filter
+
+# Maybe have definitions
+# threshold index - based on classification using species responses (P/A and/or community composition)
+# simple index - uses single metric at a time
+# composite index - summarizes multiple metrics and sources of information into one overall score
+# species response indicator- means species responses were used in the development of index or score (e.g. via indicator species analysis)
+```
+<h3>Filters</h3>
+<div class="filters">
+<div class="ui-group">
+
+  <h4>Data inputs included in assessment</h4>
+  
+<div class="button-group js-radio-button-group" data-filter-group="inputs">
+<button class="button is-checked" data-filter="">any</button>
+<button class="button" data-filter=".landuse">land use</button>
+<button class="button" data-filter=".fragmentation">fragmentation</button>
+<button class="button" data-filter=".water-quality">water quality</button>
+<button class="button" data-filter=".climate-change">climate change</button>
+<button class="button" data-filter=".indicator-species-analysis">species response indicator</button>
+</div>
+</div>
+
+<div class="ui-group">  <h4>Type of assessment</h4>
+  
+  
+<div class="button-group js-radio-button-group" data-filter-group="type">
+<button class="button is-checked" data-filter="">any</button>
+<button class="button" data-filter=".landscape-index">landscape</button>
+<button class="button" data-filter=".species-index">species</button>
+</div>
+</div>
+
+</div>
+<br>
+
+``` {r, echo = FALSE}
+# this code sets up each item in the grid and assign "selectors" (i.e. identifying classes) that can be filetered
+# see website for options to put in selectors that can be filtered using a function
+#  <div class="grid-item landuse fragmentation water-quality climate-change">
+# [![FishTail](images/Fishtail.png)](https://www.sciencebase.gov/catalog/item/52138cf2e4b0b08f44619be8)
+```
+
+<div class="grid">
+  <div class="grid-sizer"></div>
+ 
+  <div class="grid-item landscape-index landuse fragmentation water-quality climate-change indicator-species-analysis">
+  <a href="https://www.sciencebase.gov/catalog/item/52138cf2e4b0b08f44619be8" target="_blank"><img src="images/FishTail.png"></a>
+  <div class = "title"> FishTail </div> 
+  <div class = "caption"> Resource of threshold indicators for current stream habitat condition and future climate risk </div>
+  <p class="desc"><span style="color: #cc3366">tags:</span> landuse, fragmentation, water quality, climate change</p>
+  <p class="desc"><span style="color: #339933">availability:</span> Web-based map viewer, publicly downloadable datasets </p>
+  <p class="desc"><span style="color: #339999">desc:</span> Classifies fish threshold responses to a gradient of environmental conditions. Four independent indices were produced for threshold conditions in agricultural and urban land use, dam and road densities, water quality (303d impared streams), and climate change.</p>
+  <br>
+  </div>
+  
+  <div class="grid-item landscape-index landuse fragmentation">
+  <a href="https://morap.missouri.edu/index.php/developing-synoptic-human-threat-indices-for-assessing-the-ecological-integrity-of-freshwater-ecosystems-in-epa-region-7/" target="_blank"><img src="images/HTI.jpg"></a>
+  <div class = "title"> Human Threat Index </div>
+  <div class = "caption"> Composite index of potential causes of diminished ecological integrity </div>
+  <p class="desc"><span style="color: #cc3366">tags:</span> landuse, fragmentation</p>
+  <p class="desc"><span style="color: #339933">availability:</span> public report, private datasets </p>
+  <p class="desc"><span style="color: #339999">desc:</span> Quantifies and centralizes an inventory of land-use factors that potentially impact aquatic natural resources. Index represents potential cumulative threat of 35 metrics including urban and agricultural land use, road crossings, dams, and proximity to potential point source and non-point source pollution</p>
+  <br>
+  </div>
+  
+  <div class="grid-item species-index climate-change fragmentation">
+  <a href= "https://doi.org/10.1016/j.ecolind.2016.03.013" target="_blank"><img src="images/Species_vulnerability_index.jpg"></a>
+  <div class = "title"> Species Vulnerability Index </div>
+  <div class = "caption"> Composite index of potential vulnerability of Missouri fishes </div>
+  <p class="desc"><span style="color: #cc3366">tags:</span> species response attributes </p>
+  <p class="desc"><span style="color: #339933">availability:</span> peer-review publication, appendix table </p>
+  <p class="desc"><span style="color: #339999">desc:</span> Classifies species vulnerability to environmental change. Index is based on environmental tolerances weighted by species dispersal ability, distribution range, rarity, and occupied habitat resilience. Tolerances are defined by predicted changes in abundance in response to projected future temperature and flow conditions under climate change scenarios along with tolerance to habitat degradation. Habitat resilience is defined by the length of unfragmented stream surrounding occupied habitat</p>
+  <br>
+</div>
+</body>
+```{r, echo = FALSE}
+# Below is javascript code to run the display of the grid, which class the item selector is based on, and the filter to display
+# Note this is perhaps what you could call the global filter -- not the command for buttons.
+# To show all items set filter to filter: '*'
+# To show specific items use  filter: '.fragmentation', OR '.fragmentation, . landuse'
+# $('.grid').isotope({
+#   // options
+#   percentPosition: true,
+#   itemSelector: '.grid-item',
+#   filter: '*',
+#   layoutMode: 'masonry',
+#   masonry: {
+#   columnWidth: '.grid-sizer'
+#   }
+# });
+
+# // store filter for each group
+# var filters = {};
+# 
+# $(.'filters').on( 'click', '.button', function(event) {
+#   var $button = $(event.currentTarget);
+#   // get group key
+#   var $buttonGroup = $button.parents('.button-group');
+#   var filterGroup = $buttonGroup.attr('data-filter-group');
+#   // set filter for group
+#   filters[ filterGroup ] = $button.attr('data-filter');
+#   // combine filters
+#   var filterValue = concatValues( filters );
+#   $grid.isotope({ filter: filterValue });
+# });
+# 
+# // flatten object by concatting values
+# function concatValues( obj ) {
+#   var value = '';
+#   for ( var prop in obj ) {
+#     value += obj[ prop ];
+#   }
+#   return value;
+# }
+
+```
+
+```{js, echo = FALSE}
+// external js: isotope.pkgd.js
+
+// init Isotope
+var $grid = $('.grid').isotope({
+  percentPosition: true,
+  itemSelector: '.grid-item',
+  layoutMode: 'masonry',
+  masonry: {
+  columnWidth: '.grid-sizer'
+  }
+});
+
+// store filter for each group
+var filters = {};
+
+$('.filters').on( 'click', '.button', function( event ) {
+  var $button = $( event.currentTarget );
+  // get group key
+  var $buttonGroup = $button.parents('.button-group');
+  var filterGroup = $buttonGroup.attr('data-filter-group');
+  // set filter for group
+  filters[ filterGroup ] = $button.attr('data-filter');
+  // combine filters
+  var filterValue = concatValues( filters );
+  // set filter for Isotope
+  $grid.isotope({ filter: filterValue });
+});
+
+// change is-checked class on buttons
+$('.button-group').each( function( i, buttonGroup ) {
+  var $buttonGroup = $( buttonGroup );
+  $buttonGroup.on( 'click', 'button', function( event ) {
+    $buttonGroup.find('.is-checked').removeClass('is-checked');
+    var $button = $( event.currentTarget );
+    $button.addClass('is-checked');
+  });
+});
+  
+// flatten object by concatting values
+function concatValues( obj ) {
+  var value = '';
+  for ( var prop in obj ) {
+    value += obj[ prop ];
+  }
+  return value;
+}
+
+```
+
+```{r, echo = FALSE}
+# add footer
+```
+<footer>
+&nbsp;
+<center><p> Built with: <a href="http://isotope.metafizzy.co">isotope</a> by <a href="https://twitter.com/jsrogos">@jsrogos</a>.</p></center>
+&nbsp;
+</footer>
