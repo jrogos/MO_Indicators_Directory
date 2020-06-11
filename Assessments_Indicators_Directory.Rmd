@@ -21,10 +21,11 @@ body {
 }
 
 .main-container {
-max-width: 100%;
+max-width: 2000px;
 margin-left: 10%;
 margin-right: 10%;
 }
+
   .title {
   font-size: 24px;
   margin-left: 2%;
@@ -45,11 +46,13 @@ margin-right: 10%;
   margin-right: 2%;
   text-align: justify;
 }
+
 .grid-item { 
-  width: 25%;
+  width: 22%;
   background: #fff;
   box-shadow: 0 5px 10px 0 gray, 0 7px 20px 0 gray;
   border-radius: 7px;
+  margin-bottom: 20px;
 }
 
 .grid-item img {
@@ -57,7 +60,9 @@ margin-right: 10%;
   margin-left: 2%;
   margin-top: 2%
 }
-.grid-sizer { width: 33.333%; }
+.grid-sizer { 
+  width: 25%;
+}
 
 .button.is-checked{
   background-color: #666666;
@@ -65,8 +70,8 @@ margin-right: 10%;
 }
 
 .filters {
-  column-count: 2;
-  column-gap: 40px;
+  column-count: 3;
+  column-gap: 20px;
   column-fill: balance;
 }
 
@@ -102,7 +107,7 @@ footer {
 # have button for
 # what is included in assessment (fragmentation, landuse, etc.)
 # whether the data products are public or private
-# type of tool (screening tool - identify potential sites or species that may be hightly impacted by environmental stressors
+# type of tool (planning tool - identify potential sites or species that may be hightly impacted by environmental stressors
 
 # These are combination filters
 # In the JavaScript, these filters are stored in an object, 'filters'. When a button is clicked, it changes the filter for that group. The object’s 
@@ -116,8 +121,10 @@ footer {
 # species response indicator- means species responses were used in the development of index or score (e.g. via indicator species analysis)
 
 # Potential use ----
-# screening - Identify areas or species for restoration and conservation to address environmental stressors
-
+# prioritization - identify areas or species for restoration and conservation to address potential environmental stressors
+# research - investigate the relationships between potential stressors or indices and aquatic ecosystem integrity or species response
+# monitoring - identify potential reference or degraded sites or sensitive species to track through time or in response to an event
+# outreach - use maps and recognized potential stressors to educate the public or promote landowner incentive programs
 
 # Data availability -----
 # Public - easily accessible and downloadable from a website
@@ -132,11 +139,14 @@ footer {
 <div class="button-group js-radio-button-group" data-filter-group="inputs">
 <button class="button is-checked" data-filter="">any</button>
 <button class="button" data-filter=".landuse">land use</button>
-<button class="button" data-filter=".fragmentation">fragmentation</button>
+<button class="button" data-filter=".barriers">barrier density</button>
+<button class="button" data-filter=".connectivity">stream connectivity</button>
 <button class="button" data-filter=".water-quality">water quality</button>
 <button class="button" data-filter=".climate-change">climate change</button>
 </div>
 </div>
+<br>
+<br>
 
 <div class="ui-group">  <h4>Species responses are incorporated into index scores</h4>
   
@@ -144,8 +154,6 @@ footer {
 <button class="button is-checked" data-filter="">any</button>
 <button class="button" data-filter=".yes">yes</button>
 <button class="button" data-filter=".no">no</button>
-<br>
-<br>
 </div>
 </div>
 
@@ -160,8 +168,11 @@ footer {
 <div class="ui-group">  <h4>Example use</h4>
 <div class="button-group js-radio-button-group" data-filter-group="use">
 <button class="button is-checked" data-filter="">any</button>
-<button class="button" data-filter=".screening">screening</button>
-
+<button class="button" data-filter=".planning">prioritization</button>
+<button class="button" data-filter=".research">research</button>
+<button class="button" data-filter=".monitoring">monitoring</button>
+<button class="button" data-filter=".outreach">outreach</button>
+<button class="button" data-filter=".policy">guide policy</button>
 </div>
 </div>
 
@@ -172,6 +183,8 @@ footer {
 <button class="button" data-filter=".private">private</button>
 </div>
 </div>
+
+
 
 </div>
 <br>
@@ -185,34 +198,77 @@ footer {
 
 <div class="grid">
   <div class="grid-sizer"></div>
- 
-  <div class="grid-item landscape-index landuse fragmentation water-quality climate-change yes screening public">
+
+<!-- FishTail -->  
+  <div class="grid-item landscape-index landuse barriers water-quality climate-change yes planning research monitoring outreach public">
   <a href="https://www.sciencebase.gov/catalog/item/52138cf2e4b0b08f44619be8" target="_blank"><img src="images/FishTail.png"></a>
   <div class = "title"> FishTail </div> 
   <div class = "caption"> Resource of threshold indicators for current stream habitat condition and future climate risk </div>
-  <p class="desc"><span style="color: #cc3366">tags:</span> landuse, fragmentation, water quality, climate change</p>
-  <p class="desc"><span style="color: #339933">availability:</span> Web-based map viewer, publicly downloadable datasets </p>
-  <p class="desc"><span style="color: #339999">desc:</span> Four independent indices classify threshold conditions in agricultural and urban land use, dam and road densities, water quality (303d impared streams), and climate change.</p>
+  <p class="desc"><span style="color: #cc3366"><b>tags:</b></span> landuse, barriers, water quality, climate change</p>
+  <p class="desc"><span style="color: #33cc99"><b>availability:</b></span> web-based map viewer, publicly downloadable datasets </p>
+  <p class="desc"><span style="color: #339999"><b>desc:</b></span> Four independent indices classify threshold conditions in agricultural and urban land use, dam and road densities, water quality (303d impared streams), and climate change.</p>
+ <!-- <p class="desc"><span style="color: #990099">ex:</span> Prioritize areas to protect based on overlapping low risk categories of land use impacts, stream fragmentation, water quality impairment, and potential climate induced changes to stream condition.</p> -->
+  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> Wisconsin DNR investigated the relationship of Brook trout abundance in response to the land use metric, stocking, and other habitat data for the purpose of updating trout stocking guidance and identifying locations for trout reserves.</p>
   <br>
   </div>
-  
-  <div class="grid-item landscape-index landuse fragmentation no screening private">
+
+<!-- Human Threat Index -->   
+  <div class="grid-item landscape-index landuse barriers no planning research monitoring outreach private">
   <a href="https://morap.missouri.edu/index.php/developing-synoptic-human-threat-indices-for-assessing-the-ecological-integrity-of-freshwater-ecosystems-in-epa-region-7/" target="_blank"><img src="images/HTI.jpg"></a>
   <div class = "title"> Human Threat Index </div>
   <div class = "caption"> Composite index of potential causes of diminished ecological integrity </div>
-  <p class="desc"><span style="color: #cc3366">tags:</span> landuse, fragmentation</p>
-  <p class="desc"><span style="color: #339933">availability:</span> public report, private datasets </p>
-  <p class="desc"><span style="color: #339999">desc:</span> Quantifies and centralizes an inventory of land-use factors that potentially impact aquatic natural resources. Index represents potential cumulative threat of 35 metrics including urban and agricultural land use, road crossings, dams, and proximity to potential point source and non-point source pollution.</p>
+  <p class="desc"><span style="color: #cc3366"><b>tags:</b></span> landuse, barriers</p>
+  <p class="desc"><span style="color: #33cc99"><b>availability:</b></span> public report, private datasets </p>
+  <p class="desc"><span style="color: #339999"><b>desc:</b></span> Quantifies and centralizes an inventory of land-use factors that potentially impact aquatic natural resources. Index represents potential cumulative threat of 35 metrics including urban and agricultural land use, road crossings, dams, and proximity to potential point source and non-point source pollution.</p>
+  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> MDC biologists identified stressors in watersheds like Hickory Creek using the HTI to help inform whether or not they should be classified as a priority area in regional conservation and management planning.</p>
   <br>
   </div>
   
-  <div class="grid-item species-index climate-change fragmentation yes screening private">
-  <a href= "https://doi.org/10.1016/j.ecolind.2016.03.013" target="_blank"><img src="images/Species_vulnerability_index.jpg"></a>
+ <!-- Species Vulnerability Index --> 
+  <div class="grid-item species-index climate-change connectivity yes planning research monitoring outreach private">
+  <a href= "https://doi.org/10.1016/j.ecolind.2016.03.013" target="_blank"><img src="images/BrassyMinnowScore.jpg"></a>
   <div class = "title"> Species Vulnerability Index </div>
   <div class = "caption"> Composite index of potential vulnerability of Missouri fishes </div>
-  <p class="desc"><span style="color: #cc3366">tags:</span> species response attributes </p>
-  <p class="desc"><span style="color: #339933">availability:</span> peer-review publication, appendix table </p>
-  <p class="desc"><span style="color: #339999">desc:</span> Classifies species vulnerability to environmental change. Index is based on tolerance to temperature, flow, and habitat conditions, weighted by dispersal ability, range, rarity, and connectivity surrounding occupied habitats.</p>
+  <p class="desc"><span style="color: #cc3366"><b>tags:</b></span> species response attributes </p>
+  <p class="desc"><span style="color: #33cc99"><b>availability:</b></span> peer-review publication, appendix table </p>
+  <p class="desc"><span style="color: #339999"><b>desc:</b></span> Classifies species vulnerability to environmental change. Index is based on tolerance to temperature, flow, and habitat conditions, weighted by dispersal ability, range, rarity, and connectivity surrounding occupied habitats.</p>
+  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> MDC and University of Missouri cooperators used this index to propose research about the tolerance and persistance of vulnerable <i>Notropis</i> species under potential future climate conditions. </p>
+<br>
+</div>
+
+<!-- National Fish Habitat Assessment -->
+  <div class="grid-item landscape-index landuse barriers yes planning research monitoring outreach public">
+  <a href= "http://assessment.fishhabitat.org/" target="_blank"><img src="images/NFHP2015.jpg"></a>
+  <div class = "title"> Habitat Condition Index </div>
+  <div class = "caption"> National Fish Habitat Partnership's assessment of habitat condition and disturbances </div>
+  <p class="desc"><span style="color: #cc3366"><b>tags:</b></span> land use, barriers </p>
+  <p class="desc"><span style="color: #33cc99"><b>availability:</b></span> web-based report, publicly downloadable datasets </p>
+  <p class="desc"><span style="color: #339999"><b>desc:</b></span> Cumulative index of land-use factors that potentially impact inland fish habitat. Index represents 31 metrics including urban and agricultural land use, road crossings, dams, water withdrawal, population density, and point source and non-point source pollution.</p>
+  <p class="desc"><span style="color: #ff9933"><b>example:</b></span>...</p>
+  <br>
+</div>
+
+<!-- Southeast Aquatic Barrier Prioritization Tool -->
+  <div class="grid-item landscape-index landuse connectivity no planning outreach public">
+  <a href= "https://connectivity.sarpdata.com/" target="_blank"><img src="images/SARP_MO2.jpg"></a>
+  <div class = "title"> Southeast Aquatic Barrier Prioritization Tool </div>
+  <div class = "caption"> Southeast Aquatic Resource Partnership's inventory and barrier removal prioritization tool </div>
+  <p class="desc"><span style="color: #cc3366"><b>tags:</b></span> land use, barriers </p>
+  <p class="desc"><span style="color: #33cc99"><b>availability:</b></span> web-based inventory and prioritization, publicly downloadable datasets</p>
+  <p class="desc"><span style="color: #339999"><b>desc:</b></span> Tool to summarize inventoried in-stream barriers, including dams and road-related barriers or prioritize their removal. Information can be selected by area of interest, key dam characteristics, land ownership and/or stream conservaton value.</p>
+  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> In 2017, the Roaring River Dam in Tenessee was removed after being identified as an aging dam that would increase stream connectivity.</p>
+  <br>
+</div>
+
+<!-- Southeast Aquatic Barrier Prioritization Tool -->
+  <div class="grid-item landscape-index landuse connectivity no planning outreach public">
+  <a href= "https://connectivity.sarpdata.com/" target="_blank"><img src="images/SARP_MO2.jpg"></a>
+  <div class = "title"> Southeast Aquatic Barrier Prioritization Tool </div>
+  <div class = "caption"> Southeast Aquatic Resource Partnership's inventory and barrier removal prioritization tool </div>
+  <p class="desc"><span style="color: #cc3366"><b>tags:</b></span> land use, barriers </p>
+  <p class="desc"><span style="color: #33cc99"><b>availability:</b></span> web-based inventory and prioritization, publicly downloadable datasets</p>
+  <p class="desc"><span style="color: #339999"><b>desc:</b></span> Tool to summarize inventoried in-stream barriers, including dams and road-related barriers or prioritize their removal. Information can be selected by area of interest, key dam characteristics, land ownership and/or stream conservaton value.</p>
+  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> In 2017, the Roaring River Dam in Tenessee was removed after being identified as an aging dam that would increase stream connectivity.</p>
   <br>
 </div>
 
