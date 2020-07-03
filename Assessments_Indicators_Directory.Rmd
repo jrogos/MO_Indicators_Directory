@@ -11,7 +11,12 @@ knitr::opts_chunk$set(echo = FALSE)
 library(htmltools)
 # Using isotope to power the layout of the page: https://isotope.metafizzy.co/
 # See the website to download the documentation, javascripts, and learn about how to use plus licensing
-
+# Old style elements
+# .filters {
+#   column-count: 5;
+#   column-gap: 20px;
+#   column-fill: balance;
+# }
 ```
 
 <style>
@@ -31,20 +36,20 @@ margin-right: 10%;
   margin-left: 2%;
   margin-right: 2%;
   font-weight: 300;
-  text-align: justify;
+  text-align: left;
 }
 .caption {
   font-size: 16px;
   margin-left: 2%;
   margin-right: 2%;
   color: gray;
-  text-align: justify;
+  text-align: left;
 }
 .desc {
   font-size: 14px;
   margin-left: 2%;
   margin-right: 2%;
-  text-align: justify;
+  text-align: left;
 }
 
 .grid-item { 
@@ -52,7 +57,7 @@ margin-right: 10%;
   background: #fff;
   box-shadow: 0 5px 10px 0 gray, 0 7px 20px 0 gray;
   border-radius: 7px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .grid-item img {
@@ -70,15 +75,25 @@ margin-right: 10%;
 }
 
 .filters {
-  column-count: 3;
-  column-gap: 20px;
-  column-fill: balance;
+  margin-left: 2%;
+}
+
+.ui-group {
+  display: inline-block;
+}
+.ui-group h4 {
+  diplay: inline-block;
+  margin-right:0.2em;
+}
+.ui-group .button-group {
+  display: inline-block;
+  margin-right: 20px;
 }
 
 p {
 margin-top: 0;
 margin-left: 2%;
-margin-bottom: 0;
+margin-bottom: 5px;
 }
 
 footer {
@@ -92,12 +107,12 @@ footer {
 }
 
 .dropdown {
-  font-variant: small-caps;
   position: relative;
   display: inline-block;
 }
 
 .dropdown-content {
+  font-variant: small-caps;
   display: none;
   position: absolute;
   background-color: #fff;
@@ -113,7 +128,7 @@ footer {
 
 </style>
 
-<h3 style="margin-left: 2%;"> Assessments and Indicators Directory </h3>
+<h3 style="margin-left: 2%;"> Assessments and Indicators Directory. A resource of support tools for aquatic conservation. </h3>
 
 <left> <p style="font-size: 18px;"> This webpage is a living document of assessments and their indices that have been developed as decision support tools for freshwater conservation. All tools provide information for the state of Missouri, although they may be the result of regional or national assessments.</p></left>
 
@@ -153,25 +168,19 @@ footer {
 
 ```
 <center><h3>Filters</h3></center>
-<center>
-<div class="dropdown">
-<span><h4>(hover here for definitions)</h4></span> 
-    <div class="dropdown-content">
- <p style="text-align:left;"><u>prioritization</u> - identify focal sites or species for restoration and conservation</p>
-<p style="text-align:left;"><u>diagnosis</u> - identify potential stressors within a specific region or watershed</p>
- <p style="text-align:left;"><u>evaluation</u> - investigate the relationships between potential stressors or index and aquatic ecosystem integrity or species response</p>
-<p style="text-align:left;"><u>monitoring</u> -  identify focal sites or sensitive species to track through time or in response to an event</p>
- <p style="text-align:left;"><u>outreach</u> - use index to educate the public or promote landowner incentive programs</p>
-</div>
-</div>
-</center>
-<br>
 
 <div class="filters">
-<div class="ui-group">
 
-  <h4>Predictors</h4>
-  
+<div class="ui-group">  <h4>Type of assessment</h4>
+<div class="button-group js-radio-button-group" data-filter-group="type">
+<button class="button is-checked" data-filter="">any</button>
+<button class="button" data-filter=".landscape-index">landscape</button>
+<button class="button" data-filter=".instream-index">in-stream habitat</button>
+<button class="button" data-filter=".species-index">species</button>
+</div>
+</div>
+
+<div class="ui-group"><h4>Variables included in index</h4>
 <div class="button-group js-radio-button-group" data-filter-group="inputs">
 <button class="button is-checked" data-filter="">any</button>
 <button class="button" data-filter=".landuse">land use</button>
@@ -184,8 +193,7 @@ footer {
 </div>
 
 
-<div class="ui-group">  <h4>Species responses are incorporated into index scores</h4>
-  
+<div class="ui-group"><h4>Species responses are incorporated into index scores</h4>
 <div class="button-group js-radio-button-group" data-filter-group="species response">
 <button class="button is-checked" data-filter="">any</button>
 <button class="button" data-filter=".yes">yes</button>
@@ -193,13 +201,7 @@ footer {
 </div>
 </div>
 
-<div class="ui-group">  <h4>Type of assessment</h4>
-<div class="button-group js-radio-button-group" data-filter-group="type">
-<button class="button is-checked" data-filter="">any</button>
-<button class="button" data-filter=".landscape-index">landscape</button>
-<button class="button" data-filter=".species-index">species</button>
-</div>
-</div>
+
 
 <div class="ui-group">  <h4>Data accessibility</h4>
 <div class="button-group js-radio-button-group" data-filter-group="availability">
@@ -208,9 +210,17 @@ footer {
 <button class="button" data-filter=".private">proprietary</button>
 </div>
 </div>
-<br>
 
-<div class="ui-group">  <h4>Example use</h4>
+
+<div class="ui-group"><div class="dropdown"><h4>Example use</h4>
+<div class="dropdown-content">
+<p style="text-align:left;"><u>prioritization</u> - identify focal sites or species for restoration and conservation</p>
+<p style="text-align:left;"><u>diagnosis</u> - identify potential stressors within a specific region or watershed</p>
+<p style="text-align:left;"><u>evaluation</u> - investigate the relationships between potential stressors or index and aquatic ecosystem integrity or species response</p>
+<p style="text-align:left;"><u>monitoring</u> -  identify focal sites or sensitive species to track through time or in response to an event</p>
+<p style="text-align:left;"><u>outreach</u> - use index to educate the public or promote landowner incentive programs</p>
+</div>
+</div>
 <div class="button-group js-radio-button-group" data-filter-group="use">
 <button class="button is-checked" data-filter="">any</button>
 <button class="button" data-filter=".planning">prioritization</button>
@@ -219,14 +229,12 @@ footer {
 <button class="button" data-filter=".monitoring">monitoring</button>
 <button class="button" data-filter=".outreach">outreach</button>
 <button class="button" data-filter=".policy">guide policy</button>
-<br>
 </div>
 </div>
-
-
 
 </div> <!-- close filters columns -->
-
+<br>
+<p><center><button class="button button--reset">Reset filters</button></p></center>
 
 ``` {r, echo = FALSE}
 # this code sets up each item in the grid and assign "selectors" (i.e. identifying classes) that can be filetered
@@ -286,7 +294,7 @@ footer {
   <p class="desc"><span style="color: #cc3366"><b>tags:</b></span> land use, barriers, species response indicator, public </p>
   <p class="desc"><span style="color: #33cc99"><b>availability:</b></span> <a href= "http://assessment.fishhabitat.org/" target="_blank">web-based report</a>, <a href = "http://assessment.fishhabitat.org/#578d5e34e4b0c1aacabb4ca4/578d5e34e4b0c1aacabb4ca4SingleItem" target="_blank"> downloadable data </a></p>
   <p class="desc"><span style="color: #339999"><b>desc:</b></span> Cumulative index of land-use factors that potentially impact inland fish habitat. Index represents 31 metrics including urban and agricultural land use, road crossings, dams, water withdrawal, population density, and point source and non-point source pollution.</p>
-  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> undertermined specific case </p>
+  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> undetermined specific case </p>
   <br>
 </div>
 
@@ -303,7 +311,7 @@ footer {
 </div>
 
 <!-- Candidate Stream Reference Reaches -->
-  <div class="grid-item landscape-index landuse habitat water-quality yes planning diagnosis monitoring policy private">
+  <div class="grid-item landscape-index instream-index landuse habitat water-quality yes planning diagnosis monitoring policy private">
   <a href= "https://doi.org/10.1016/j.ecolind.2019.105966" target="_blank"><img src="images/Candidate_streams.jpg"></a>
   <div class = "title"> Candidate Stream Reference Reaches </div>
   <div class = "caption"> Stream impairement classification of stream reaches for the state of Missouri </div>
@@ -322,7 +330,7 @@ footer {
   <p class="desc"><span style="color: #cc3366"><b>tags:</b></span> land use, water quality, barriers, public </p>
   <p class="desc"><span style="color: #33cc99"><b>availability:</b></span> <a href= "https://doi.org/10.1016/j.scitotenv.2018.10.112" target="_blank">peer-reviewed publication</a>, <a href= "https://www.epa.gov/national-aquatic-resource-surveys/streamcat" target="_blank">downloadable data</a></p>
   <p class="desc"><span style="color: #339999"><b>desc:</b></span> Classification of watershed condition with respect to six key watershed functions: hydrologic regulation, regulation of water chemistry, sediment regulation, hydrologic connectivity, temperature regulation, and habitat provision. This index has been incorporated into the  <a href= "https://www.epa.gov/national-aquatic-resource-surveys/streamcat" target="_blank">StreamCat </a> database.</p>
-  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> undertermined specific case </p>
+  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> TBD </p>
   <br>
 </div>
 
@@ -334,7 +342,7 @@ footer {
   <p class="desc"><span style="color: #cc3366"><b>tags:</b></span> land use, barriers, species response indicators, public </p>
   <p class="desc"><span style="color: #33cc99"><b>availability:</b></span> <a href= "https://mospace.umsystem.edu/xmlui/handle/10355/45689" target="_blank">thesis</a>, <a href = "https://www.sciencebase.gov/catalog/item/597a2a7ae4b0ec1a488bb24d" target="_blank">downloadable data </a></p>
   <p class="desc"><span style="color: #339999"><b>desc:</b></span> Rankings are made with respect to land use, existing conservation areas, connectivity, and species vulnerability to maximize species representation across the state of Missouri.</p>
-  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> undertermined specific case </p>
+  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> TBD </p>
   <br>
 </div>
 
@@ -346,7 +354,7 @@ footer {
   <p class="desc"><span style="color: #cc3366"><b>tags:</b></span> habitat, climate change, proprietary </p>
   <p class="desc"><span style="color: #33cc99"><b>availability:</b></span> proprietary final report and datasets</p>
   <p class="desc"><span style="color: #339999"><b>desc:</b></span> Provides predictive stream temperature model for wadeable streams across the state based on long-term monitoring data and relationships to environmental variables. Forecasted stream temperatures under climate model projections are available for streams in the Missouri Ozark Plateau. </p>
-  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> ...</p>
+  <p class="desc"><span style="color: #ff9933"><b>example:</b></span> TBD </p>
   <br>
 </div> 
 
@@ -385,6 +393,19 @@ $('.filters').on( 'click', '.button', function( event ) {
   $grid.isotope({ filter: filterValue });
 });
 
+// add bit to be able to reset all filters
+ var $anyButtons = $('.filters').find('button[data-filter=""]');
+  var $buttons = $('.filters button');
+
+  $('.button--reset').on( 'click', function( event ) {
+    // reset filters
+    filters = {};
+    $grid.isotope({ filter: '*' });
+    // reset buttons
+    $buttons.removeClass('is-checked');
+    $anyButtons.addClass('is-checked');
+  });
+
 // change is-checked class on buttons
 $('.button-group').each( function( i, buttonGroup ) {
   var $buttonGroup = $( buttonGroup );
@@ -394,6 +415,7 @@ $('.button-group').each( function( i, buttonGroup ) {
     $button.addClass('is-checked');
   });
 });
+
   
 // flatten object by concatting values
 function concatValues( obj ) {
