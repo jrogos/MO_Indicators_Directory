@@ -74,23 +74,26 @@ margin-right: 10%;
   color: white;
 }
 
+
 .filters {
   margin-left: 2%;
+  display: inline-block;
 }
 
 .ui-group {
   display: inline-block;
+  width: 100%;
 }
 .ui-group h4 {
-  diplay: inline-block;
-  margin-right:0.2em;
+  display: inline-block;
 }
 .ui-group .button-group {
-  display: inline-block;
+  display: block;
   margin-right: 20px;
 }
 
 p {
+display: inline-block;
 margin-top: 0;
 margin-left: 2%;
 margin-bottom: 5px;
@@ -167,52 +170,49 @@ footer {
 # Private - either housed privately by a government agency or copyright protected in a peer-reviewed publication
 
 ```
-<center><h3>Filters</h3></center>
+<center style="text-align: left;"><h3 style="margin-left: 2%;">Filters</h3>
 
 <div class="filters">
 
-<div class="ui-group">  <h4>Type of assessment</h4>
-<div class="button-group js-radio-button-group" data-filter-group="type">
-<button class="button is-checked" data-filter="">any</button>
-<button class="button" data-filter=".landscape-index">landscape</button>
-<button class="button" data-filter=".instream-index">in-stream habitat</button>
-<button class="button" data-filter=".species-index">species</button>
-</div>
-</div>
-
-<div class="ui-group"><h4>Variables included in index</h4>
-<div class="button-group js-radio-button-group" data-filter-group="inputs">
-<button class="button is-checked" data-filter="">any</button>
-<button class="button" data-filter=".landuse">land use</button>
-<button class="button" data-filter=".barriers">barrier density</button>
-<button class="button" data-filter=".connectivity">stream connectivity</button>
-<button class="button" data-filter=".water-quality">water quality</button>
-<button class="button" data-filter=".habitat">in-stream habitat</button>
-<button class="button" data-filter=".climate-change">climate change</button>
-</div>
+<div class="ui-group"><h4>Type of assessment</h4>
+<select class="filter-select" value-group="type">
+<option value="">any</option>
+<option value=".landscape-index">landscape</option>
+<option value=".instream-index">in-stream habitat</option>
+<option value=".species-index">species</option>
+</select>
 </div>
 
-
-<div class="ui-group"><h4>Species responses are incorporated into index scores</h4>
-<div class="button-group js-radio-button-group" data-filter-group="species response">
-<button class="button is-checked" data-filter="">any</button>
-<button class="button" data-filter=".yes">yes</button>
-<button class="button" data-filter=".no">no</button>
-</div>
-</div>
-
-
-
-<div class="ui-group">  <h4>Data accessibility</h4>
-<div class="button-group js-radio-button-group" data-filter-group="availability">
-<button class="button is-checked" data-filter="">any</button>
-<button class="button" data-filter=".public">public</button>
-<button class="button" data-filter=".private">proprietary</button>
-</div>
+<div class="ui-group"><h4>Variable inputs</h4>
+<select class="filter-select" value-group="inputs">
+<option value="">any</option>
+<option value=".landuse">land use</option>
+<option value=".barriers">barrier density</option>
+<option value=".connectivity">stream connectivity</option>
+<option value=".water-quality">water quality</option>
+<option value=".habitat">in-stream habitat</option>
+<option value=".climate-change">climate change</option>
+</select>
 </div>
 
+<div class="ui-group"><h4>Species response incorporated</h4>
+<select class="filter-select" value-group="species response">
+<option value="">any</option>
+<option value=".yes">yes</option>
+<option value=".no">no</option>
+</select>
+</div>
 
-<div class="ui-group"><div class="dropdown"><h4>Example use</h4>
+<div class="ui-group">
+<h4>Data accessibility</h4>
+<select class="filter-select" value-group="availability">
+<option value="">any</option>
+<option value=".public">public</option>
+<option value=".private">proprietary</option>
+</select>
+</div>
+
+<div class="ui-group"><div class="dropdown"> <h4>Example use</h4>
 <div class="dropdown-content">
 <p style="text-align:left;"><u>prioritization</u> - identify focal sites or species for restoration and conservation</p>
 <p style="text-align:left;"><u>diagnosis</u> - identify potential stressors within a specific region or watershed</p>
@@ -221,26 +221,28 @@ footer {
 <p style="text-align:left;"><u>outreach</u> - use index to educate the public or promote landowner incentive programs</p>
 </div>
 </div>
-<div class="button-group js-radio-button-group" data-filter-group="use">
-<button class="button is-checked" data-filter="">any</button>
-<button class="button" data-filter=".planning">prioritization</button>
-<button class="button" data-filter=".diagnosis">diagnosis</button>
-<button class="button" data-filter=".research">evaluation</button>
-<button class="button" data-filter=".monitoring">monitoring</button>
-<button class="button" data-filter=".outreach">outreach</button>
-<button class="button" data-filter=".policy">guide policy</button>
-</div>
+<select class="filter-select" value-group="use">
+<option value="">any</option>
+<option value=".planning">prioritization</option>
+<option value=".diagnosis">diagnosis</option>
+<option value=".research">evaluation</option>
+<option value=".monitoring">monitoring</option>
+<option value=".outreach">outreach</option>
+<option value=".policy">guide policy</option>
+</select>
 </div>
 
 </div> <!-- close filters columns -->
 <br>
-<p><center><button class="button button--reset">Reset filters</button></p></center>
-
+<p><button class="button button--reset">Reset filters</button></p>
+</center>
 ``` {r, echo = FALSE}
 # this code sets up each item in the grid and assign "selectors" (i.e. identifying classes) that can be filetered
 # see website for options to put in selectors that can be filtered using a function
 #  <div class="grid-item landuse fragmentation water-quality climate-change">
 # [![FishTail](images/Fishtail.png)](https://www.sciencebase.gov/catalog/item/52138cf2e4b0b08f44619be8)
+
+
 ```
 
 <center> <h3> Tools available to explore </h3> </center>
@@ -380,43 +382,18 @@ var $grid = $('.grid').isotope({
 // store filter for each group
 var filters = {};
 
-$('.filters').on( 'click', '.button', function( event ) {
-  var $button = $( event.currentTarget );
+$('.filters').on( 'change', function( event ) {
+  var $select = $( event.target );
   // get group key
-  var $buttonGroup = $button.parents('.button-group');
-  var filterGroup = $buttonGroup.attr('data-filter-group');
+  var filterGroup = $select.attr('value-group');
   // set filter for group
-  filters[ filterGroup ] = $button.attr('data-filter');
+  filters[ filterGroup ] = event.target.value;
   // combine filters
   var filterValue = concatValues( filters );
   // set filter for Isotope
   $grid.isotope({ filter: filterValue });
 });
 
-// add bit to be able to reset all filters
- var $anyButtons = $('.filters').find('button[data-filter=""]');
-  var $buttons = $('.filters button');
-
-  $('.button--reset').on( 'click', function( event ) {
-    // reset filters
-    filters = {};
-    $grid.isotope({ filter: '*' });
-    // reset buttons
-    $buttons.removeClass('is-checked');
-    $anyButtons.addClass('is-checked');
-  });
-
-// change is-checked class on buttons
-$('.button-group').each( function( i, buttonGroup ) {
-  var $buttonGroup = $( buttonGroup );
-  $buttonGroup.on( 'click', 'button', function( event ) {
-    $buttonGroup.find('.is-checked').removeClass('is-checked');
-    var $button = $( event.currentTarget );
-    $button.addClass('is-checked');
-  });
-});
-
-  
 // flatten object by concatting values
 function concatValues( obj ) {
   var value = '';
@@ -426,11 +403,26 @@ function concatValues( obj ) {
   return value;
 }
 
+
+  $('.button--reset').on( 'click', function( event ) {
+    // reset filters
+    filters = {};
+    $grid.isotope({ filter: '*' });
+    // reset dropdowns
+    //$(".filter-select")
+    //$("#filter-select option:first").attr('selected', true);
+    //$("#filter-select option:eq(0)").prop('selected', true);
+    //$("#type option:first").attr('selected', true);
+    //$("#type option:selected").removeAttr('selected');
+    $('.filter-select option:selected').removeAttr('selected');
+  });
+
 ```
 
 
 ```{r, echo = FALSE}
 # add footer
+
 ```
 <footer>
 <br>
