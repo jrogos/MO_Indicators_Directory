@@ -499,11 +499,6 @@ function concatValues( obj ) {
 <p style="font-weight: 600;">Missouri Cooperative Fish and Wildlife Research Unit</p>
 <p style="font-weight: 600;">University of Missouri</p>
 <p style="font-weight: 600;">In cooperation with Missouri Department of Conservation</p>
-<center><p>Built with: <a href="http://isotope.metafizzy.co">isotope</a> by <a href="https://github.com/jrogos">Jane Rogosch</a>, <a href="https://twitter.com/jrogos">@jsrogos</a></p>
-<p>Missouri Cooperative Fish and Wildlife Research Unit</p>
-<p>University of Missouri</p>
-<p>In cooperation with Missouri Department of Conservation</p>
-</center>
 &nbsp;
 </footer>
 </body>
