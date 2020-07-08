@@ -17,6 +17,20 @@ library(htmltools)
 #   column-gap: 20px;
 #   column-fill: balance;
 # }
+
+# /* Create two columns that float next to each other */
+# .column {
+#   float: left;
+#   width: 50%
+#   padding: 10px;
+# }
+#   
+# /* Clear floats after the columns */
+# .row:after {
+#   content: "";
+#   display: table;
+#   clear: both;
+# }
 ```
 
 <style>
@@ -31,7 +45,7 @@ margin-left: 10%;
 margin-right: 10%;
 }
 
-  .title {
+.title {
   font-size: 24px;
   margin-left: 2%;
   margin-right: 2%;
@@ -128,25 +142,27 @@ footer {
   display: block;
 }
 
-/* Create two columns that float next to each other */
 .column {
   float: left;
-  width: 50%
-  padding: 10px;
-  
+  padding: 5px;
+}
+
+.left {
+  width: 33%;
+}
+
+.right {
+  width: 66%;
+}
+
 /* Clear floats after the columns */
-.row: after {
+.row:after {
   content: "";
   display: table;
   clear: both;
 }
+
 </style>
-
-<h3 style="margin-left: 2%;"> Assessments and Indicators Directory. A resource of support tools for aquatic conservation. </h3>
-
-<left> <p style="font-size: 18px;"> This webpage is a living document of assessments and their indices that have been developed as decision support tools for freshwater conservation. All tools provide information for the state of Missouri, although they may be the result of regional or national assessments.</p></left>
-
-
 
 
 <script src="isotope-docs/isotope.pkgd.min.js"></script>
@@ -181,7 +197,10 @@ footer {
 # Private - either housed privately by a government agency or copyright protected in a peer-reviewed publication
 
 ```
-<div class="row:>
+
+<h3 style="margin-left: 2%;"> Assessments and Indicators Directory: <span style="font-size: 20px;">A resource of support tools for aquatic conservation.</span></h3>
+<div class ="row">
+<div class="column left">
 
 <h3 style="margin-left: 2%;">Filters</h3>
 
@@ -269,10 +288,19 @@ footer {
 </select>
 </div>
 
-</div> <!-- close filters columns -->
+</div> <!-- close filter -->
 <br>
 <p><button class="button button--reset">Reset filters</button></p>
+</div> <!-- close left column -->
 
+
+<div class="column right">
+<h3 style="margin-left: 2%;">Quick start guide</h3>
+<left> <p style="font-size: 17px;"> This webpage is a living document of decision support tools for freshwater conservation. All tools provide information for the state of Missouri, although they may be the result of regional or national assessments.</p></left>
+<p style="font-size: 17px;">Each assessment or index is summarized on an individual card. Text tags ("tags:") serve as a visual cross-reference to appropriate filters for that tool. Each card has links to source documents and data where available ("availability:") and a short description ("desc:") about the tool. In some cases, a specific example ("example:") of how the tool has been used in the past is provided.</p>
+<p  style="font-size: 17px;">By default all cards are displayed.  To narrow the results, select filters from dropdown menus in the left panel and scroll down to see cards that match the selection. Hover over each filter heading to see definitions for the corresponding drop-menu options. Filters function as exclusive combination filters to minimize the number of displayed cards. To return to a full display, click on the "reset filters" button. </p>
+</div> <!-- close second column -->
+</div> <!-- close row -->
 ``` {r, echo = FALSE}
 # this code sets up each item in the grid and assign "selectors" (i.e. identifying classes) that can be filetered
 # see website for options to put in selectors that can be filtered using a function
@@ -298,8 +326,8 @@ footer {
   <p class="desc"><span style="color: #339999"><b>desc: </b></span>Four independent indices classify threshold conditions in agricultural and urban land use, dam and road densities, water quality (303d impared streams), and climate change.</p>
  <!-- <p class="desc"><span style="color: #990099">ex:</span> Prioritize areas to protect based on overlapping low risk categories of land use impacts, stream fragmentation, water quality impairment, and potential climate induced changes to stream condition.</p> -->
   <p class="desc"><span style="color: #ff9933"><b>example: </b></span>Wisconsin DNR investigated the relationship of Brook trout abundance in response to the land use metric, stocking, and other habitat data for the purpose of updating trout stocking guidance and identifying locations for trout reserves.</p>
-  <br>
-  </div>
+<br>
+</div>
 
 <!-- Human Threat Index -->   
   <div class="grid-item landscape-index landuse barriers no planning diagnosis research outreach private">
@@ -310,18 +338,18 @@ footer {
   <p class="desc"><span style="color: #33cc99"><b>availability: </b></span><a href="https://morap.missouri.edu/index.php/developing-synoptic-human-threat-indices-for-assessing-the-ecological-integrity-of-freshwater-ecosystems-in-epa-region-7/" target="_blank">final project report available upon request</a>, proprietary data</p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span> Quantifies and centralizes an inventory of land-use factors that potentially impact aquatic natural resources. Index represents potential cumulative threat of 35 metrics including urban and agricultural land use, road crossings, dams, and proximity to potential point source and non-point source pollution.</p>
   <p class="desc"><span style="color: #ff9933"><b>example: </b></span>MDC biologists identified stressors in watersheds like Hickory Creek using the HTI to help inform whether or not they should be classified as priority conservation opportunity areas in regional planning.</p>
-  <br>
-  </div>
+<br>
+</div>
   
  <!-- Species Vulnerability Index --> 
   <div class="grid-item species-index climate-change connectivity yes planning research monitoring outreach private">
   <a href= "https://doi.org/10.1016/j.ecolind.2016.03.013" target="_blank"><img src="images/BrassyMinnowScore.jpg"></a>
   <div class = "title">Species Vulnerability Index</div>
   <div class = "caption">Composite index of potential vulnerability of Missouri fishes</div>
-  <p class="desc"><span style="color: #cc3366"><b>tags: </b></span>climate change, connectivity, species response indicator, private </p>
+  <p class="desc"><span style="color: #cc3366"><b>tags: </b></span>climate change, connectivity, species response indicator, proprietary </p>
   <p class="desc"><span style="color: #33cc99"><b>availability: </b></span><a href = "docs/Sievert_et_al_2016_Eco_Ind.pdf">peer-review publication</a>, <a href = "http://www.riverstudies.com/Data/Sievert_FishVulnIndex.xlsx">download data here</a></p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span>Classifies species vulnerability to environmental change. Index is based on tolerance to temperature, flow, and habitat conditions, weighted by dispersal ability, range, rarity, and connectivity surrounding occupied habitats.</p>
-  <p class="desc"><span style="color: #ff9933"><b>example: </b></span>MDC and University of Missouri cooperators used this index to propose research about the tolerance and persistance of vulnerable <i>Notropis</i> species under potential future climate conditions. </p>
+  <p class="desc"><span style="color: #ff9933"><b>example: </b></span>MDC and University of Missouri cooperators used this index to propose research about the tolerance and persistance of vulnerable <i>Notropis</i> species under potential future climate conditions.</p>
 <br>
 </div>
 
@@ -334,7 +362,7 @@ footer {
   <p class="desc"><span style="color: #33cc99"><b>availability: </b></span><a href= "http://assessment.fishhabitat.org/" target="_blank">web-based report</a>, <a href = "http://assessment.fishhabitat.org/#578d5e34e4b0c1aacabb4ca4/578d5e34e4b0c1aacabb4ca4SingleItem" target="_blank">downloadable data</a></p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span> Cumulative index of land-use factors that potentially impact inland fish habitat. Index represents 31 metrics including urban and agricultural land use, road crossings, dams, water withdrawal, population density, and proximity to point source and non-point source pollution.</p>
   <p class="desc"><span style="color: #ff9933"><b>example: </b></span>TBD</p>
-  <br>
+<br>
 </div>
 
 <!-- Southeast Aquatic Barrier Prioritization Tool -->
@@ -346,7 +374,7 @@ footer {
   <p class="desc"><span style="color: #33cc99"><b>availability: </b></span><a href = "https://connectivity.sarpdata.com/" target="_blank"> web-based inventory and prioritization</a>, downloadable datasets based on user-selected criteria</p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span>Tool to summarize inventoried in-stream barriers, including dams and road-related barriers or prioritize their removal. Information can be selected by area of interest, key dam characteristics, land ownership and/or stream conservaton value.</p>
   <p class="desc"><span style="color: #ff9933"><b>example: </b></span>In 2017, the Roaring River Dam in Tenessee was removed after being identified as an aging dam that would increase stream connectivity.</p>
-  <br>
+<br>
 </div>
 
 <!-- Candidate Stream Reference Reaches -->
@@ -358,7 +386,7 @@ footer {
   <p class="desc"><span style="color: #33cc99"><b>availability: </b></span><a href= "docs/Paukert_Kleekamp_2020_Eco_Ind.pdf" target="_blank">peer-reviewed publication</a>, proprietary data</p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span>Classification represents the predicted level of biotic integrity dervied from relationships between landscape-level and site-specific habitat factors that affect local fish and macroinvertebrate assemblages.</p>
   <p class="desc"><span style="color: #ff9933"><b>example: </b></span>Has been Used to identify least-disturbed sites as potential benchmarks of ecological integrity for Missouri DNR.</p>
-  <br>
+<br>
 </div>
 
 <!-- Index of Watershed Integrity -->
@@ -370,7 +398,7 @@ footer {
   <p class="desc"><span style="color: #33cc99"><b>availability: </b></span><a href= "https://doi.org/10.1016/j.scitotenv.2018.10.112" target="_blank">peer-reviewed publication</a>, <a href= "https://www.epa.gov/national-aquatic-resource-surveys/streamcat" target="_blank">downloadable data</a></p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span>Classification of watershed condition with respect to six key watershed functions: hydrologic regulation, regulation of water chemistry, sediment regulation, hydrologic connectivity, temperature regulation, and habitat provision. This index has been incorporated into the  <a href= "https://www.epa.gov/national-aquatic-resource-surveys/streamcat" target="_blank">StreamCat </a> database.</p>
   <p class="desc"><span style="color: #ff9933"><b>example: </b></span>TBD</p>
-  <br>
+<br>
 </div>
 
 <!-- Freshwater Conservation Network (Sievert et al. 2014/2020) -->
@@ -382,7 +410,7 @@ footer {
   <p class="desc"><span style="color: #33cc99"><b>availability: </b></span><a href= "https://mospace.umsystem.edu/xmlui/handle/10355/45689" target="_blank">thesis</a>, <a href = "https://www.sciencebase.gov/catalog/item/597a2a7ae4b0ec1a488bb24d" target="_blank">downloadable data</a></p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span>Rankings are made with respect to land use, existing conservation areas, connectivity, and species vulnerability to maximize species representation across the state of Missouri.</p>
   <p class="desc"><span style="color: #ff9933"><b>example: </b></span>TBD</p>
-  <br>
+<br>
 </div>
 
  <!-- Stream Temperature Model -->
@@ -394,7 +422,7 @@ footer {
   <p class="desc"><span style="color: #33cc99"><b>availability: </b></span><a href="docs/Whittier_2018_StreamTemp_FinalReport">final report</a>, proprietary datasets</p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span> Provides predictive stream temperature model for wadeable streams across the state based on long-term monitoring data and relationships to environmental variables. Forecasted stream temperatures under climate model projections are available for streams in the Missouri Ozark Plateau.</p>
   <p class="desc"><span style="color: #ff9933"><b>example: </b></span>TBD</p>
-  <br>
+<br>
 </div> 
 
 
