@@ -463,11 +463,15 @@ margin-bottom: 5px;
 <br>
 </div> 
 
+<div class="no-results"><span style="color: #0000ff; font-size: 20px;"><b>No Results Found. Please reset filters and try again</b></div>
+
 </div> <!-- close content for upcoming footer-->
 ```{r, echo = FALSE}
 # Below is javascript code to run the display of the grid, which class the item selector is based on, and the filter to display
 
 ```
+
+
 
 ```{js, echo = FALSE}
 // external js: isotope.pkgd.js
@@ -484,7 +488,7 @@ var $grid = $('.grid').isotope({
 
 // store filter for each group
 var filters = {};
-
+    $grid.isotope({ filter: '*' });
 $('.filters').on( 'change', function( event ) {
   var $select = $( event.target );
   // get group key
@@ -506,6 +510,18 @@ function concatValues( obj ) {
   return value;
 }
 
+
+$grid.on( 'arrangeComplete', function( event, filteredItems ) {
+	  //console.log( filteredItems.length );
+	  if(filteredItems.length > 0){
+		  $(".no-results").hide();
+	  }else{
+		  $(".no-results").show();
+	  }
+});
+
+
+
   $('.button--reset').on( 'click', function( event ) {
     // reset filters
     filters = {};
@@ -513,23 +529,30 @@ function concatValues( obj ) {
     // reset dropdowns
     $('.filter-select option:selected').removeAttr('selected');
   });
+  
 
 ```
 
 
 ```{r, echo = FALSE}
 # add footer
-
+# $container.isotope({ filter: '.filters'});
+# if ( !$container.data('isotope').filteredItems.length == 0) {
+#     // do stuff when no element was found
+#      $('#noResultsContainer').show();}
+#      else { 
+#      $('#noResultsContainer')noResultsContainer.hide();
+# }
 ```
 <footer>
 <br>
 
 <center><p style="font-weight: 600;">Built with: <a href="http://isotope.metafizzy.co">isotope</a> by <a href="https://github.com/jrogos">Jane Rogosch</a>, <a href="https://twitter.com/jrogos">@jsrogos</a></p>
-<p>last update 25 Aug 2020</p>
-<p>for questions or comments email jsrbht [at] missouri [dot] edu</p>
 <p style="font-weight: 600;">Missouri Cooperative Fish and Wildlife Research Unit</p>
 <p style="font-weight: 600;">University of Missouri</p>
 <p style="font-weight: 600;">In cooperation with Missouri Department of Conservation</p>
+<p>last update 25 Aug 2020</p>
+<p>for questions or comments email jsrbht [at] missouri [dot] edu</p>
 &nbsp;
 </footer>
 </body>
