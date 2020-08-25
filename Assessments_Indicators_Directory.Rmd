@@ -218,26 +218,26 @@ margin-bottom: 5px;
 <div class="ui-group"><div class="dropdown"><h4>Type of index</h4>
 <div class="dropdown-content">
 <p style="text-align:left;"><u>landscape</u> - measure of threats or habitat condition using spatial patterns across a landscape.</p>
-<p style="text-align:left;"><u>in-stream habitat</u> - measure of habitat condition using patch-level habitat metrics.</p>
 <p style="text-align:left;"><u>species</u> - measure of species vulnerability based on biological traits and/or potential threats.</p>
 </div>
 </div>
 <select class="filter-select" value-group="type">
 <option value="">any</option>
 <option value=".landscape-index">landscape</option>
-<option value=".instream-index">in-stream habitat</option>
 <option value=".species-index">species</option>
 </select>
 </div>
 
 <div class="ui-group"><div class="dropdown"><h4>Variable inputs</h4>
 <div class="dropdown-content">
-<p style="text-align:left;"><u>land use</u> - typically metrics related to land management in a given catchment (e.g. %agriculture, %impervious surface cover), but may include reach-level proximity to land modifications (e.g. average distance to mine).</p>
-<p style="text-align:left;"><u>barrier density</u> - typically the number of dams or road crossings upstream, downstream, or within a given area</p>
-<p style="text-align:left;"><u>stream connectivity</u> - typically the length of stream kilometers without barriers surrounding a given reach</p>
-<p style="text-align:left;"><u>water quality</u> - may be site level parameters (e.g. DO, pH, etc.) or reach level (e.g. 303d EPA classification)</p>
+<p style="text-align:left;"><u>land use</u> - metrics related to land management in a given catchment (e.g. %agriculture, %impervious surface cover), but may include reach-level proximity to land modifications (e.g. average distance to mine).</p>
+<p style="text-align:left;"><u>barrier density</u> - number of dams or road crossings upstream, downstream, or within a given area</p>
+<p style="text-align:left;"><u>stream connectivity</u> - total length of stream kilometers without barriers surrounding a given location</p>
+<p style="text-align:left;"><u>water quality</u> - metrics pertaining to water physico-chemistry and pollution. Metrics may be site level parameters (e.g. DO, pH, etc.) or reach level (e.g. 303d EPA classification)</p>
 <p style="text-align:left;"><u>in-stream habitat</u> - describe physical characterstics including metrics related to channel morphology (e.g. channel slope, width, %riffle, etc.), substrate (e.g. %gravel, embeddedness), cover (e.g. vegetation density, canopy shading), and so on.</p>
 <p style="text-align:left;"><u>climate change</u> - metrics describe predicted changes in air or stream temperature and/or discharge</p>
+<p style="text-align:left;"><u>temperature</u> - typically a metric of air temperature but for species scores includes stream temperature thresholds</p>
+<p style="text-align:left;"><u>flow</u> - metrics pertaining to stream discharge (e.g. mean annual flows, base flow index)</p>
 </div>
 </div>
 <select class="filter-select" value-group="inputs">
@@ -248,6 +248,8 @@ margin-bottom: 5px;
 <option value=".water-quality">water quality</option>
 <option value=".habitat">in-stream habitat</option>
 <option value=".climate-change">climate change</option>
+<option value=".temperature">temperature</option>
+<option value=".flow">flow</option>
 </select>
 </div>
 
@@ -326,11 +328,11 @@ margin-bottom: 5px;
   <div class="grid-sizer"></div>
 
 <!-- FishTail -->  
-  <div class="grid-item landscape-index landuse barriers water-quality climate-change yes planning diagnosis research public">
+  <div class="grid-item landscape-index landuse barriers water-quality climate-change temperature flow yes planning diagnosis research public">
   <a href="http://necsc.umass.edu/projects/decisions-support-mapper-conserving-stream-fish-habitats-ne-csc-region" target="_blank"><img src="images/FishTail.png"></a>
   <div class = "title">FishTail</div> 
   <div class = "caption">Resource of threshold indicators for current stream habitat condition and future climate risk</div>
-  <p class="desc"><span style="color:#cc3366"><b>tags: </b></span>land use, barriers, water quality, climate change, species response incorporated</p>
+  <p class="desc"><span style="color:#cc3366"><b>tags: </b></span>land use, barriers, water quality, climate change, temperature, flow, species response incorporated</p>
   <p class="desc"><span style="color:#33cc99"><b>availability: </b></span><a href= "https://ccviewer.wim.usgs.gov/Fishtail/#" target="_blank"> web-based map viewer</a>, <a href = "https://www.sciencebase.gov/catalog/item/5900aefbe4b0c2e071a84b0a" target="_blank">publicly downloadable final report</a>, <a href= "https://www.sciencebase.gov/catalog/item/590a049de4b0fc4e44916012" target="_blank">downloadable data</a></p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span>Four independent indices classify threshold conditions in agricultural and urban land use, dam and road densities, water quality (303d impared streams), and climate change.</p>
  <!-- <p class="desc"><span style="color: #990099">ex:</span> Prioritize areas to protect based on overlapping low risk categories of land use impacts, stream fragmentation, water quality impairment, and potential climate induced changes to stream condition.</p> -->
@@ -357,11 +359,11 @@ margin-bottom: 5px;
 </div>
   
  <!-- Species Vulnerability Index --> 
-  <div class="grid-item species-index climate-change connectivity yes planning research monitoring outreach private">
+  <div class="grid-item species-index climate-change temperature flow connectivity yes planning research monitoring outreach private">
   <a href= "https://doi.org/10.1016/j.ecolind.2016.03.013" target="_blank"><img src="images/BrassyMinnowScore.jpg"></a>
   <div class = "title">Species Vulnerability Index</div>
   <div class = "caption">Composite index of potential vulnerability of Missouri fishes</div>
-  <p class="desc"><span style="color: #cc3366"><b>tags: </b></span>climate change, connectivity, species response incorporated</p>
+  <p class="desc"><span style="color: #cc3366"><b>tags: </b></span>climate change, temperature, flow, connectivity, species response incorporated</p>
   <p class="desc"><span style="color: #33cc99"><b>availability: </b></span><a href = "docs/Sievert_et_al_2016_Eco_Ind.pdf">peer-review publication</a>, <a href = "http://www.riverstudies.com/Data/Sievert_FishVulnIndex.xlsx">download data here</a></p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span>Classifies species vulnerability to environmental change. Index is based on tolerance to temperature, flow, and habitat conditions, weighted by dispersal ability, range, rarity, and connectivity surrounding occupied habitats.</p>
   <p class="desc"><span style="color: #ff9933"><b>example: </b></span>MDC and University of Missouri cooperators used this index to propose research about the tolerance and persistance of vulnerable <i>Notropis</i> species under potential future climate conditions.</p>
@@ -372,11 +374,11 @@ margin-bottom: 5px;
 </div>
 
 <!-- National Fish Habitat Assessment -->
-  <div class="grid-item landscape-index landuse barriers yes planning diagnosis research outreach public">
+  <div class="grid-item landscape-index landuse barriers water-quality, temperature flow yes planning diagnosis research outreach public">
   <a href= "http://assessment.fishhabitat.org/" target="_blank"><img src="images/NFHP2015.jpg"></a>
   <div class = "title">Habitat Condition Index</div>
   <div class = "caption">National Fish Habitat Partnership's assessment of habitat condition and disturbances</div>
-  <p class="desc"><span style="color: #cc3366"><b>tags: </b></span>land use, barriers, species response indcorporated</p>
+  <p class="desc"><span style="color: #cc3366"><b>tags: </b></span>land use, barriers, water quality, temperature, flow, species response indcorporated</p>
   <p class="desc"><span style="color: #33cc99"><b>availability: </b></span><a href= "http://assessment.fishhabitat.org/" target="_blank">web-based report</a>, <a href = "http://assessment.fishhabitat.org/#578d5e34e4b0c1aacabb4ca4/578d5e34e4b0c1aacabb4ca4SingleItem" target="_blank">downloadable data</a></p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span> Cumulative index of land-use factors that potentially impact inland fish habitat. Index represents 31 metrics including urban and agricultural land use, road crossings, dams, water withdrawal, population density, and proximity to point source and non-point source pollution.</p>
   <p class="desc"><span style="color: #ff9933"><b>example: </b></span>TBD</p>
@@ -402,7 +404,7 @@ margin-bottom: 5px;
 </div>
 
 <!-- Candidate Stream Reference Reaches -->
-  <div class="grid-item landscape-index instream-index landuse habitat water-quality yes planning diagnosis monitoring policy private">
+  <div class="grid-item landscape-index landuse habitat water-quality yes planning diagnosis monitoring policy private">
   <a href= "https://doi.org/10.1016/j.ecolind.2019.105966" target="_blank"><img src="images/Candidate_streams.jpg"></a>
   <div class = "title">Candidate Stream Reference Reaches</div>
   <div class = "caption">Stream impairment classification of stream reaches for the state of Missouri</div>
@@ -447,11 +449,11 @@ margin-bottom: 5px;
 </div>
 
  <!-- Stream Temperature Model -->
-  <div class="grid-item landscape-index climate-change no planning research monitoring private">
+  <div class="grid-item landscape-index climate-change temperature flow no planning research monitoring private">
   <img src="images/Stream_Temp.jpg">
   <div class = "title">Stream Temperature Models</div>
   <div class = "caption">Predicts water temperatures for wadeable streams of Missouri</div>
-  <p class="desc"><span style="color: #cc3366"><b>tags: </b></span>climate change</p>
+  <p class="desc"><span style="color: #cc3366"><b>tags: </b></span>climate change, temperature, flow</p>
   <p class="desc"><span style="color: #33cc99"><b>availability: </b></span><a href="docs/Whittier_2018_StreamTemp_FinalReport.pdf">final report</a>, proprietary datasets</p>
   <p class="desc"><span style="color: #339999"><b>desc: </b></span> Provides predictive stream temperature model for wadeable streams across the state based on long-term monitoring data and relationships to environmental variables. Forecasted stream temperatures under climate model projections are available for streams in the Missouri Ozark Plateau.</p>
   <p class="desc"><span style="color: #ff9933"><b>example: </b></span>TBD</p>
@@ -523,6 +525,8 @@ function concatValues( obj ) {
 <br>
 
 <center><p style="font-weight: 600;">Built with: <a href="http://isotope.metafizzy.co">isotope</a> by <a href="https://github.com/jrogos">Jane Rogosch</a>, <a href="https://twitter.com/jrogos">@jsrogos</a></p>
+<p>last update 25 Aug 2020</p>
+<p>for questions or comments email jsrbht [at] missouri [dot] edu</p>
 <p style="font-weight: 600;">Missouri Cooperative Fish and Wildlife Research Unit</p>
 <p style="font-weight: 600;">University of Missouri</p>
 <p style="font-weight: 600;">In cooperation with Missouri Department of Conservation</p>
